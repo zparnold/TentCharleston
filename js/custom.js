@@ -190,24 +190,4 @@ $(document).ready(function () {
         $('html, body').animate({ scrollTop: 0 }, 800);
         return false;
     });
-
-    $.get("http://www.tentcharleston.com/blog/feed/", function (data) {
-        var documentFragment = $(document.createDocumentFragment());
-        var counter = 0;
-        $(data).find("item").each(function () { // or "item" or whatever suits your feed
-            if (counter < 3) {
-                var el = $(this);
-                var openDiv = '<div class="col-sm-4 margin-btm-30 wow animated fadeInUp" data-wow-duration="700ms" data-wow-delay="100ms"> <div class="blog-desc">  <h3><a href="#">' + el.find("title").text() + '</a></h3>';
-                var dateDiv = '<span>' + el.find("pubDate").text() + '</span>';
-                var descDiv = '<p>' + el.find("description") + '</p>';
-                var linkDiv = '<p class="text-right"> <a href="'+ el.find("guid").text() +'" class="btn btn-dark btn-xs"> Read More </a> </p> </div> </div>';
-
-                var fragment = openDiv + dateDiv + descDiv + linkDiv;
-                documentFragment.append(fragment);
-            }
-            counter += 1;
-        });
-
-        $('#recentPosts').append(documentFragment);
-    });
 });

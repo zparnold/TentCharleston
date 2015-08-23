@@ -298,50 +298,7 @@
 
             <div class="divided-50"></div>
             <div class="row" id="recentPosts">
-                <div class="col-sm-4 margin-btm-30 wow animated fadeInUp" data-wow-duration="700ms" data-wow-delay="100ms">
-                    
-                    <div class="blog-desc">
-                        <h3><a href="#">Are You Prepared For September 2015?</a></h3>
-                        <span>August 16, 2015</span>
-                        <p>
-                            At that time his voice shook the earth, but now he has promised, “Yet once more I will shake not only the earth but also the heavens.”
-                            – Hebrews 12:26
-                            </p><p>
-                            A few nights ago, my wife Nicole had a dream...
-                        </p>
-                        <p class="text-right">
-                            <a href="http://www.tentcharleston.com/blog/2015/08/16/are-you-prepared-for-september-2015/" class="btn btn-dark btn-xs">
-                                Read More
-                            </a>
-                        </p>
-                    </div><!--blog desc-->
-                </div><!--blog post col end-->
-                <div class="col-sm-4 margin-btm-30 wow animated fadeInUp" data-wow-duration="700ms" data-wow-delay="200ms">
-                    
-                    <div class="blog-desc">
-                        <h3><a href="#">2014 Tent Meetings Featured In The Post And Courier</a></h3>
-                        <span>August 16, 2015</span>
-                        <p>A great article by Jennifer Hawes in the Post and Courier about last year’s tent meetings (Sept 24 – Oct 8, 2014). Here is the link (postandcourier.com/article/20141004/PC1204/141009756) or the article is pasted below.  Glory to God!...</p>
-                        <p class="text-right">
-                            <a href="http://www.tentcharleston.com/blog/2015/08/16/the-power-of-god-for-salvation/" class="btn btn-dark btn-xs">
-                                Read More
-                            </a>
-                        </p>
-                    </div><!--blog desc-->
-                </div><!--blog post col end-->
-                <div class="col-sm-4 margin-btm-30 wow animated fadeInUp" data-wow-duration="700ms" data-wow-delay="300ms">
-                    
-                    <div class="blog-desc">
-                        <h3><a href="#">The Power of God For Salvation</a></h3>
-                        <span>August 16, 2015</span>
-                        <p>Last year, Edward was born again in a powerful way following a dream that he had died and gone to hell. He did not repeat a sinner’s prayer but repented to God from his heart in his own words, and he received breakthrough for salvation....</p>
-                        <p class="text-right">
-                            <a href="http://www.tentcharleston.com/blog/2015/08/16/the-power-of-god-for-salvation-2/" class="btn btn-dark btn-xs">
-                                Read More
-                            </a>
-                        </p>
-                    </div><!--blog desc-->
-                </div><!--blog post col end-->
+                
             </div><!--blog post row-->
         </div>
     </section><!--blog section end-->
@@ -466,3 +423,31 @@
     <script src="js/jqBootstrapValidation.js" type="text/javascript"></script>
     <!--customizable plugin edit according to your needs-->
     <script src="js/custom.js" type="text/javascript"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+
+    google.load("feeds", "1");
+
+    function initialize() {
+      var feed = new google.feeds.Feed("http://tentcharleston.com/blog/feed");
+      feed.load(function(result) {
+        if (!result.error) {
+          var container = document.getElementById("recentPosts");
+          for (var i = 0; i < 3; i++) {
+
+            var entry = result.feed.entries[i];
+			var openDiv = '<div class="col-sm-4 margin-btm-30 wow animated fadeInUp" data-wow-duration="700ms" data-wow-delay="100ms"> <div class="blog-desc">  <h3><a href="#">' + entry.title + '</a></h3>';
+                var dateDiv = '<span>' + entry.publishedDate + '</span>';
+                var descDiv = '<p>' + entry.contentSnippet + '</p>';
+                var linkDiv = '<p class="text-right"> <a href="'+ entry.link+'" class="btn btn-dark btn-xs"> Read More </a> </p> </div> </div>';
+
+                var fragment = openDiv + dateDiv + descDiv + linkDiv;
+
+            container.innerHTML += fragment;
+          }
+        }
+      });
+    }
+    google.setOnLoadCallback(initialize);
+
+</script>
