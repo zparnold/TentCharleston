@@ -449,7 +449,7 @@
           for (var i = 0; i < 3; i++) {
 
             var entry = result.feed.entries[i];
-			var openDiv = '<div class="col-sm-4 margin-btm-30 wow animated fadeInUp" data-wow-duration="700ms" data-wow-delay="100ms"> <div class="blog-desc">  <h3><a href="#">' + entry.title + '</a></h3>';
+			var openDiv = '<div class="col-sm-4 margin-btm-30 wow animated fadeInUp" data-wow-duration="700ms" data-wow-delay="100ms"> <div class="blog-desc">  <h3><a href="'+ entry.link+'">' + entry.title + '</a></h3>';
                 var dateDiv = '<span>' + entry.publishedDate + '</span>';
                 var descDiv = '<p>' + entry.contentSnippet + '</p>';
                 var linkDiv = '<p class="text-right"> <a href="'+ entry.link+'" class="btn btn-dark btn-xs"> Read More </a> </p> </div> </div>';
